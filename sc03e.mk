@@ -81,6 +81,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.hsxpa=1 \
     ro.ril.gprsclass=10
 
+# Default Locale
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.product.locale.language=ja \
+    ro.product.locale.region=JP
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
