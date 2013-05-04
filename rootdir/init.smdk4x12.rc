@@ -1,7 +1,12 @@
 import init.smdk4x12.usb.rc
 import init.bt.rc
+import init.carrier.rc
 
 on init
+    setprop ro.kbc.propsupport 1
+    chmod 0755 /kbc/setprop
+    symlink /kbc/setprop /sbin/setprop
+
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage 0550 system sdcard_r
     mkdir /storage/emulated 0555 root root
@@ -20,6 +25,8 @@ on init
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
     symlink /storage/sdcard1 /extSdCard
     symlink /storage/sdcard1 /mnt/extSdCard
+    symlink /storage/sdcard1 /external_sd
+    symlink /storage/sdcard1 /mnt/external_sd
     symlink /storage/usbdisk0 /usbdisk0
     symlink /storage/usbdisk0 /mnt/usbdisk0
 
@@ -45,6 +52,9 @@ on fs
     
     chown radio system /efs
     chmod 0771 /efs
+
+# for felica
+    exec /sbin/felica_init.sh
 
 #MDM requirement
     mkdir /firmware 0771 system system

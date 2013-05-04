@@ -29,9 +29,15 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12 \
+    $(LOCAL_PATH)/rootdir/init.carrier.rc:root/init.carrier.rc \
+    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
     $(LOCAL_PATH)/rootdir/init.smdk4x12.rc:root/init.smdk4x12.rc \
     $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc
+    $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
+    $(LOCAL_PATH)/rootdir/sbin/felica_init.sh:root/sbin/felica_init.sh \
+    $(LOCAL_PATH)/rootdir/sbin/init.prop.sh:root/sbin/init.prop.sh \
+    $(LOCAL_PATH)/rootdir/sbin/setpropex:root/sbin/setpropex \
+    $(LOCAL_PATH)/rootdir/kbc/setprop:root/kbc/setprop
 
 # Audio
 PRODUCT_COPY_FILES += \
