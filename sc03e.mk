@@ -88,7 +88,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.gprsclass=10
 
 # Default Locale
-PRODUCT_PROPERTY_OVERRIDES := \
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.locale.language=ja \
     ro.product.locale.region=JP
 
