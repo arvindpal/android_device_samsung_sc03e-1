@@ -35,6 +35,10 @@ COMMON_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
 TARGET_KERNEL_SOURCE := kernel/samsung/exynos4412dcm
 TARGET_KERNEL_CONFIG := kbc_sc03e_aosp_defconfig
 
+# Recovery
+TARGET_RECOVERY_FSTAB := device/samsung/i9305/rootdir/fstab.smdk4x12
+RECOVERY_FSTAB_VERSION := 2
+
 # assert
 TARGET_OTA_ASSERT_DEVICE := m3,m3xx,sc03e,SC-03E,i9305,GT-I9305
 
