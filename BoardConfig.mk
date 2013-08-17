@@ -42,5 +42,27 @@ RECOVERY_FSTAB_VERSION := 2
 # assert
 TARGET_OTA_ASSERT_DEVICE := m3,m3xx,sc03e,SC-03E,i9305,GT-I9305
 
+# Selinux
+BOARD_SEPOLICY_DIRS := \
+    device/samsung/sc03e/selinux
+
+BOARD_SEPOLICY_UNION := \
+    file_contexts \
+    te_macros \
+    device.te \
+    dhcp.te \
+    domain.te \
+    file.te \
+    init.te \
+    kickstart.te \
+    mediaserver.te \
+    netmgrd.te \
+    qmux.te \
+    rild.te \
+    secril.te \
+    system.te \
+    ueventd.te \
+    wpa_supplicant.te
+
 # inherit from the proprietary version
 -include vendor/samsung/sc03e/BoardConfigVendor.mk
