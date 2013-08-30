@@ -43,9 +43,14 @@ on post-fs-data
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
+
+# Restorecon
+    restorecon /efs/bluetooth/bt_addr
     restorecon /efs/FactoryApp/keystr
     restorecon /efs/FactoryApp/factorymode
     restorecon /efs/FactoryApp/serial_no
+    restorecon /efs/imei/mps_code.dat
+    restorecon /efs/wifi/.mac.info
 
     # for AT distributor
     chown system radio /sys/module/cpuidle_exynos4/parameters/enable_mask
@@ -54,9 +59,6 @@ on post-fs-data
     # Waketime fot fast dormancy
     chown system radio /sys/devices/platform/mdm_hsic_pm0/waketime
     chmod 0660 /sys/devices/platform/mdm_hsic_pm0/waketime
-
-    mkdir /data/local/audio 0775 media audio
-    chown media audio /data/local/audio
 
     chown radio system /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
     chmod 0660 /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
@@ -120,6 +122,7 @@ service qmuxd /system/bin/qmuxd
     seclabel u:r:qmux:s0
     group radio log audio bluetooth gps log
 
+#start GNSS/Sensor interface daemon
 service gsiff_daemon /system/bin/gsiff_daemon
     class late_start
     user system
