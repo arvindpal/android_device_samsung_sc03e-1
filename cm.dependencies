@@ -9,7 +9,6 @@
     },
     {
         "repository": "kernel_samsung_exynos4412",
-        "branch": "kbc-cyanogen-cm-11.0",
         "target_path": "kernel/samsung/exynos4412dcm"
     },
     {
