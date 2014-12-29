@@ -50,9 +50,9 @@
 /dev/video23              0660   system     system
 /dev/video24              0660   system     system
 /dev/video25              0660   system     camera
-/dev/video26              0666   media      camera
-/dev/video29              0666   media      camera
-/dev/video32              0660   media      camera
+/dev/video26              0666   media      m2m
+/dev/video29              0666   media      m2m
+/dev/video32              0660   media      m2m
 
 /dev/video33              0660   system     system
 /dev/video34              0660   system     system
@@ -96,6 +96,16 @@
 /dev/lte*                 0660   system     radio 
 /dev/cdma*                0660   system     radio 
 /dev/link_pm              0660   system     radio
+
+# sensor sysfs properties
+/sys/devices/virtual/input/input*   acc_poll_delay  0660  system   radio
+/sys/devices/virtual/input/input*   gyro_poll_delay  0660  system   radio
+/sys/devices/virtual/input/input*   pressure_poll_delay  0660  system   radio
+/sys/devices/virtual/input/input*   light_poll_delay  0660  system   radio
+/sys/devices/virtual/input/input*   prox_poll_delay  0660  system   radio
+
+# sensorhub
+/dev/ssp_sensorhub        0660   system     input
 
 # for felica
 /dev/felica             0666    root    root

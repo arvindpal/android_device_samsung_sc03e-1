@@ -14,89 +14,29 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/sc03e
-
-# Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+LOCAL_PATH := device/samsung/sc02e
 
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12 \
     $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
-    $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
-    $(LOCAL_PATH)/rootdir/init.carrier.rc:root/init.carrier.rc \
-    $(LOCAL_PATH)/rootdir/sbin/felica_init.sh:root/sbin/felica_init.sh
-
-# Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/m3
-
-# Camera
-PRODUCT_PACKAGES += \
-    camera.smdk4x12
-
-# GPS
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
-
-# Product specific Packages
-PRODUCT_PACKAGES += \
-    DeviceSettings
-
-# NFC
-PRODUCT_PACKAGES += \
-    nfc.exynos4 \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag
+    $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc 
+#    $(LOCAL_PATH)/rootdir/init.carrier.rc:root/init.carrier.rc \
+#    $(LOCAL_PATH)/rootdir/sbin/init.prop.sh:root/sbin/init.prop.sh
 
 PRODUCT_COPY_FILES += \
-    packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
-# NFCEE access control
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/nfcee_access.xml
-else
-    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/nfcee_access_debug.xml
-endif
-
-PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
-
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras
-
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
-
-# RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SamsungQualcommRIL \
-    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
-    ro.telephony.ril.v3=newDriverCall,newDialCode
+#for debug
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 
 # Default Locale
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.locale.language=ja \
     ro.product.locale.region=JP
 
-# These are the hardware-specific features
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
-
 # Include common makefile
-$(call inherit-product, device/samsung/smdk4412-common/common.mk)
-$(call inherit-product, device/samsung/smdk4412-qcom-common/common.mk)
+$(call inherit-product, device/samsung/sc02e/common.mk)
 
-$(call inherit-product-if-exists, vendor/samsung/sc03e/sc03e-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/sc02e/sc02e-vendor.mk)

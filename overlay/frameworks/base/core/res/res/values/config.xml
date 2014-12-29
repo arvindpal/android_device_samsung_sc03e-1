@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2012, The Android Open Source Project
+** Copyright 2011, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -19,31 +19,7 @@
 
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Do not translate. Defines the slots for the right-hand side icons.  That is to say, the
-         icons in the status bar that are not notifications. -->
-    <string-array name="config_statusBarIcons">
-       <item><xliff:g id="id">ime</xliff:g></item>
-       <item><xliff:g id="id">sync_failing</xliff:g></item>
-       <item><xliff:g id="id">sync_active</xliff:g></item>
-       <item><xliff:g id="id">location</xliff:g></item>
-       <item><xliff:g id="id">bluetooth</xliff:g></item>
-       <item><xliff:g id="id">nfc</xliff:g></item>
-       <item><xliff:g id="id">tty</xliff:g></item>
-       <item><xliff:g id="id">speakerphone</xliff:g></item>
-       <item><xliff:g id="id">mute</xliff:g></item>
-       <item><xliff:g id="id">volume</xliff:g></item>
-       <item><xliff:g id="id">wifi</xliff:g></item>
-       <item><xliff:g id="id">cdma_eri</xliff:g></item>
-       <item><xliff:g id="id">data_connection</xliff:g></item>
-       <item><xliff:g id="id">phone_evdo_signal</xliff:g></item>
-       <item><xliff:g id="id">phone_signal</xliff:g></item>
-       <item><xliff:g id="id">battery</xliff:g></item>
-       <item><xliff:g id="id">alarm_clock</xliff:g></item>
-       <item><xliff:g id="id">secure</xliff:g></item>
-       <item><xliff:g id="id">clock</xliff:g></item>
-       <item><xliff:g id="id">felica_lock</xliff:g></item>
-    </string-array>
+<resources>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
@@ -84,30 +60,61 @@
         <item>"rndis0"</item>
     </string-array>
 
-    <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
-    <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
-    <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
-    <integer-array translatable="false" name="config_tether_upstream_types">
-        <item>0</item>
-        <item>1</item>
-        <item>5</item>
-        <item>7</item>
-    </integer-array>
-
-    <!-- Indicate whether the SD card is accessible without removing the battery. -->
-    <bool name="config_batterySdCardAccessibility">true</bool>
-
     <!-- The default iface on which to monitor data use -->
     <string name="config_datause_iface">pdp0</string>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
+    <!-- Indicate whether the SD card is accessible without removing the battery. -->
+    <bool name="config_batterySdCardAccessibility">true</bool>
 
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">true</bool>
+    <!-- Vibrator pattern for feedback about a long screen/key press -->
+    <integer-array name="config_longPressVibePattern">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about touching a virtual key -->
+    <integer-array name="config_virtualKeyVibePattern">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
+    <integer-array name="config_keyboardTapVibePattern">
+        <item>20</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
+    <integer-array name="config_safeModeDisabledVibePattern">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
+    <integer-array name="config_safeModeEnabledVibePattern">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+        <item>500</item>
+        <item>600</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about hitting a scroll barrier -->
+    <integer-array name="config_scrollBarrierVibePattern">
+        <item>0</item>
+        <item>15</item>
+        <item>10</item>
+        <item>10</item>
+    </integer-array>
 
     <!-- Default color for notification LED is white. -->
     <color name="config_defaultNotificationColor">#ffffffff</color>
@@ -121,33 +128,5 @@
     <!-- Allow the menu hard key to be disabled in LockScreen on some devices -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
-    <!-- Disable the home key unlock setting -->
-    <!-- <bool name="config_disableHomeUnlockSetting">false</bool> -->
-
-    <!-- Workaround for devices with broken keyboards -->
-    <!-- <bool name="config_forceDisableHardwareKeyboard">true</bool> -->
-
-    <!-- Hardware 'face' keys present on the device, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareKeys">7</integer>
-
-    <!-- Boolean to enable stk functionality on Samsung phones -->
-    <bool name="config_samsung_stk">true</bool>
-
-    <!-- Control whether a desk dock event should override the default bluetooth
-         audio routing, FORCE_BT_DESK_DOCK, with an analog dock, FORCE_ANALOG_DOCK. -->
-    <bool name="config_forceAnalogDeskDock">true</bool>
-
-    <!-- Control whether a car dock event should override the default bluetooth
-         audio routing, FORCE_BT_CAR_DOCK, with an analog dock, FORCE_ANALOG_DOCK. -->
-    <bool name="config_forceAnalogCarDock">true</bool>
 
 </resources>
