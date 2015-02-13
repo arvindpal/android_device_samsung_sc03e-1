@@ -31,8 +31,8 @@ for FILE in `cat ../$DEVICE/proprietary-files.txt | grep -v ^# | grep -v ^$`; do
         mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/$DIR
     fi
     adb pull /$FILE ../../../vendor/$VENDOR/$DEVICE/proprietary/$FILE
-    
 done
+
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__VENDOR__/$VENDOR/g > ../../../vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk
 # Copyright (C) 2013 The CyanogenMod Project
