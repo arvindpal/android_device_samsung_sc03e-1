@@ -89,10 +89,8 @@ PRODUCT_COPY_FILES += \
 #for debug
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 
-# Default Locale
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.locale.language=ja \
-    ro.product.locale.region=JP
+# AOJP config (Locale,other)
+$(call inherit-product-if-exists, vendor/aojp/config/aojp.mk)
 
 # Include common makefile
 $(call inherit-product, device/samsung/smdk4412-common/common.mk)
