@@ -96,6 +96,6 @@ $(call inherit-product-if-exists, vendor/aojp/config/aojp.mk)
 $(call inherit-product, device/samsung/smdk4412-common/common.mk)
 $(call inherit-product, device/samsung/smdk4412-qcom-common/common.mk)
 
-$(call inherit-product-if-exists, vendor/samsung/smdk4412-felica-common/smdk4412-felica-common-vendor.mk)
-$(call inherit-product-if-exists, vendor/samsung/smdk4412-oneseg-common/smdk4412-oneseg-common-vendor.mk)
+#$(call inherit-product-if-exists, vendor/samsung/smdk4412-felica-common/smdk4412-felica-common-vendor.mk)
+#$(call inherit-product-if-exists, vendor/samsung/smdk4412-oneseg-common/smdk4412-oneseg-common-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/sc03e/sc03e-vendor.mk)
