@@ -22,6 +22,15 @@
 
 LOCAL_PATH := device/samsung/sc03e
 
+# Compiler flags
+ENABLE_GCCONLY := true
+GRAPHITE_OPTS := true
+STRICT_ALIASING := true
+SUPPRES_UNUSED_WARNING := true
+TARGET_GCC_VERSION_EXP := 4.8
+TARGET_USE_PIPE := true
+USE_O3_OPTIMIZATIONS := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
