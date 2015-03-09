@@ -45,8 +45,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
 
 # Product specific Packages
-PRODUCT_PACKAGES += \
-    DeviceSettings
+#PRODUCT_PACKAGES += \
+#    DeviceSettings
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -72,7 +72,9 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+    Stk \
+    SamsungServiceMode
 
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
