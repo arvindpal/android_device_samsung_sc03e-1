@@ -54,6 +54,10 @@ TARGET_OTA_ASSERT_DEVICE := m3,m3xx,sc03e,SC-03E,i9305,GT-I9305
 # Linker
 BOARD_NO_CHECK_PIE_BINARY := true
 
+#one-seg hack
+#COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+#COMMON_GLOBAL_CFLAGS += -DJB_ONESEG_SYMBOLS
+
 # inherit from the proprietary version
 -include vendor/samsung/sc03e/BoardConfigVendor.mk
 
