@@ -19,15 +19,6 @@
 
 LOCAL_PATH := device/samsung/sc03e
 
-# Compiler flags
-ENABLE_GCCONLY := true
-GRAPHITE_OPTS := true
-STRICT_ALIASING := true
-SUPPRES_UNUSED_WARNING := true
-TARGET_GCC_VERSION_EXP := 4.8
-TARGET_USE_PIPE := true
-USE_O3_OPTIMIZATIONS := true
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
@@ -47,18 +38,9 @@ BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 androidboot.selinux=permissive
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/sc03e/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
-BOARD_RECOVERY_SWIPE := true
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := m3,m3xx,sc03e,SC-03E,i9305,GT-I9305
-
-# Linker
-BOARD_NO_CHECK_PIE_BINARY := true
-
-
-#one-seg hack
-#COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-#COMMON_GLOBAL_CFLAGS += -DJB_ONESEG_SYMBOLS
 
 # Selinux
 BOARD_SEPOLICY_DIRS += \

@@ -33,8 +33,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc
 
 # Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/m3
+PRODUCT_PACKAGES += \
+    tiny_hw
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -44,7 +44,31 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     sensors.smdk4x12
 
+# NFC
 PRODUCT_PACKAGES += \
+    nfc.exynos4 \
+    libnfc \
+    libnfc_jni \
+    Nfc \
+    Tag
+
+PRODUCT_COPY_FILES += \
+    packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
+    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
+
+# NFCEE access control
+ifeq ($(TARGET_BUILD_VARIANT),user)
+    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/nfcee_access.xml
+else
+    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/nfcee_access_debug.xml
+endif
+
+PRODUCT_COPY_FILES += \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
     Stk \
     SamsungServiceMode
 
@@ -68,6 +92,4 @@ $(call inherit-product, device/samsung/smdk4412-qcom-common/common.mk)
 $(call inherit-product-if-exists, vendor/samsung/smdk4412-felica-common/smdk4412-felica-common-vendor.mk)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/smdk4412-common/overlay-felica
 
-#$(call inherit-product-if-exists, vendor/samsung/smdk4412-oneseg-common/smdk4412-oneseg-common-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/sc03e/sc03e-vendor.mk)
-
