@@ -25,6 +25,8 @@
 
 #include <cutils/log.h>
 
+#include <string.h>
+
 #include <linux/input.h>
 
 #include "SensorBase.h"

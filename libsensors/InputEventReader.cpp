@@ -24,6 +24,8 @@
 
 #include <linux/input.h>
 
+#include <string.h>
+
 #include <cutils/log.h>
 
 #include "InputEventReader.h"

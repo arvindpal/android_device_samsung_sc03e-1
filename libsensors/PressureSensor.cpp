@@ -22,6 +22,8 @@
 #include <dirent.h>
 #include <sys/select.h>
 
+#include <string.h>
+
 #include <cutils/log.h>
 
 #include "PressureSensor.h"

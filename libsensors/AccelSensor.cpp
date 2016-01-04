@@ -20,6 +20,8 @@
 #include <poll.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <string.h>
+
 #include <sys/select.h>
 #include <cutils/log.h>
 
