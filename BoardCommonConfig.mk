@@ -22,22 +22,22 @@ LOCAL_PATH := device/samsung/sc03e
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
-# RIL
-COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{ "ril.ks.status", AID_SYSTEM, 0 },'
-
 # Camera
 COMMON_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
+
+TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/exynos4412dcm
 TARGET_KERNEL_CONFIG := kbc_sc03e_aosp_defconfig
 
 # Kernel(overwrite)
-BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := ttySAC2,115200 consoleblank=0 androidboot.hardware=smdk4x12 androidboot.selinux=permissive
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/sc03e/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
+BOARD_RECOVERY_SWIPE := true
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := m3,m3xx,sc03e,SC-03E,i9305,GT-I9305
@@ -46,34 +46,5 @@ TARGET_OTA_ASSERT_DEVICE := m3,m3xx,sc03e,SC-03E,i9305,GT-I9305
 BOARD_SEPOLICY_DIRS += \
     device/samsung/sc03e/selinux
 
-BOARD_SEPOLICY_UNION += \
-    bluetooth.te \
-    radio.te \
-    file_contexts \
-    te_macros \
-    device.te \
-    dhcp.te \
-    domain.te \
-    file.te \
-    init.te \
-    kickstart.te \
-    mediaserver.te \
-    netd.te \
-    netmgrd.te \
-    nfc.te \
-    qmiproxy.te \
-    qmuxd.te \
-    rild.te \
-    secril.te \
-    servicemanager.te \
-    sysinit.te \
-    system.te \
-    system_app.te \
-    system_server.te \
-    time_daemon.te \
-    ueventd.te \
-    vold.te \
-    wpa.te \
-    wpa_supplicant.te \
-    zygote.te
-
+# Linker
+BOARD_NO_CHECK_PIE_BINARY := true

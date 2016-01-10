@@ -8,9 +8,6 @@ TARGET_SCREEN_WIDTH := 720
 # Inherit device configuration
 $(call inherit-product, device/samsung/sc03e/full_sc03e.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
-
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 

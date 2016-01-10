@@ -23,14 +23,15 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
 # if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc
+    $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc \
+    $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -72,9 +73,16 @@ PRODUCT_PACKAGES += \
     Stk \
     SamsungServiceMode
 
+# Samsung symbols
+PRODUCT_PACKAGES += \
+    libsamsung_symbols
+
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces=pdp0,gprs,ppp0,rmnet0,rmnet1
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bin/ks-wrapper.sh:/system/bin/ks
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -89,7 +97,8 @@ $(call inherit-product, device/samsung/smdk4412-common/common.mk)
 $(call inherit-product, device/samsung/smdk4412-qcom-common/common.mk)
 
 #felica
-$(call inherit-product-if-exists, vendor/samsung/smdk4412-felica-common/smdk4412-felica-common-vendor.mk)
-DEVICE_PACKAGE_OVERLAYS += device/samsung/smdk4412-common/overlay-felica
+#$(call inherit-product-if-exists, vendor/samsung/smdk4412-felica-common/smdk4412-felica-common-vendor.mk)
+#DEVICE_PACKAGE_OVERLAYS += device/samsung/smdk4412-common/overlay-felica
 
-$(call inherit-product-if-exists, vendor/samsung/sc03e/sc03e-vendor.mk)
+#$(call inherit-product-if-exists, vendor/samsung/smdk4412-oneseg-common/smdk4412-oneseg-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/sc03e/sc03e-common-vendor.mk)
