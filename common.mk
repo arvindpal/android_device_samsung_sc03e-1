@@ -34,8 +34,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12
 
 # Audio
-PRODUCT_PACKAGES += \
-    tiny_hw
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/m3
 
 # Camera
 PRODUCT_PACKAGES += \
